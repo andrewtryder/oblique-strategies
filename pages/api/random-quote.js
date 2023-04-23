@@ -16,7 +16,7 @@ const quotesFilePath = join(process.cwd(), 'public', 'oblique.txt');
 const quotesFile = readFileSync(quotesFilePath, { encoding: 'utf-8' });
 const quotes = quotesFile.split('\n');
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   try {
     // Get list of images in Cloudinary folder
     const prefix = CLOUDINARY_FOLDER_NAME + '/';
@@ -52,3 +52,5 @@ export default async (req, res) => {
     res.status(500).send('Internal server error');
   }
 };
+
+export default handler;
